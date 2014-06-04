@@ -7,7 +7,9 @@ import javax.persistence.*;
  * The persistent class for the UserRecord database table.
  * 
  */
-@Entity(name = "UserRecord")
+//@Entity(name = "UserRecord")
+import java.io.interface;
+
 public class UserRegistration implements Serializable {
 
 	@Id
