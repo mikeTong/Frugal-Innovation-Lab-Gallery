@@ -1,7 +1,7 @@
 
 import java.io.Serializable;
 import javax.persistence.*;
-
+//Kai 's comment
 //Test
 /**
  * The persistent class for the UserRecord database table.
