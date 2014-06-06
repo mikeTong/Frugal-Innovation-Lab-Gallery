@@ -257,12 +257,12 @@ public class UserRegistrationGUI extends javax.swing.JFrame {
                             "You need to enter a unique user ID number that was not used before.",
                             "Error Message",
                             JOptionPane.ERROR_MESSAGE);
-        		}
-        		else{
         			count++;
-        		}
+        		}	
         	}
-        	UserRegistrationTableController.addRow(array);
+    		if(count == 0){
+    			UserRegistrationTableController.addRow(array);
+    		}
     	}
     	else{
 			JOptionPane.showMessageDialog( controllingFrame,
@@ -295,6 +295,7 @@ public class UserRegistrationGUI extends javax.swing.JFrame {
     private void updateUserButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                 
         // TODO add your handling code here:
     	//addButton a row to the table
+    	//int index = jtable1.getSelectedRow();
     	String[] array = new String[jtable1.getColumnCount()];
     	array[0] = userIDTextField.getText();
     	array[1] = userNameTextField.getText();
@@ -305,11 +306,12 @@ public class UserRegistrationGUI extends javax.swing.JFrame {
     	else if(jRadioButton2.isSelected()){
     		array[3] = jRadioButton2.getText();
     	}
+    	
+    	Component controllingFrame = null;
     	if(array[0] != null && array[1] != null && array[2] != null && array[3] != null){
-    		UserRegistrationTableController.addRow(array);
+    		UserRegistrationTableController.updateRow(array);
     	}
     	else{
-    		Component controllingFrame = null;
 			JOptionPane.showMessageDialog( controllingFrame,
                     "You need to input values for all text fields and radio buttons",
                     "Error Message",

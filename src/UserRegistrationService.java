@@ -43,6 +43,7 @@ public class UserRegistrationService {
     		 user.setPassword(password);
     		 user.setTypeOfUser(typeOfUser);
     	 }
+    	 //manager.merge(user);
     	 return user;
      }
 

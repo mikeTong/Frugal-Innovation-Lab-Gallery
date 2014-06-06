@@ -71,7 +71,7 @@ public class UserRegistrationTableController implements ListSelectionListener, T
 	public void deleteRow(int userID) {
 		tableModel.deleteRow(userID);			
 	}
-	public void updateRow(int userID) {
-		tableModel.updateRow(userID);			
+	public void updateRow(String[] array) {
+		tableModel.updateRow(array);			
 	}
 }

@@ -14,7 +14,7 @@ import java.util.*;
 */
 public class UserRegistrationTableModel extends AbstractTableModel {
 
-	  List<UserRegistration> UserRegistrationResultList;   // stores the model data in a List collection of type CourseList
+	  List<UserRegistration> UserRegistrationResultList;   // stores the model data in a List collection of type UserRegistration
 	  private static final String PERSISTENCE_UNIT_NAME = "PersistenceUnit";  // Used in persistence.xml
 	  private static EntityManagerFactory factory;  // JPA  
 	  private EntityManager manager;				// JPA 
@@ -138,15 +138,22 @@ public class UserRegistrationTableModel extends AbstractTableModel {
 			userTransaction.begin();
 			UserRegistrationService.deleteUser(userID);
 			userTransaction.commit();
+			int index = UserRegistrationResultList.indexOf(manager.find(UserRegistration.class, userID));
+			UserRegistrationResultList.remove(index);
+			
 	 }
 	 
-	 public void updateRow(int userID){
+	 public void updateRow(Object[] array){
 			//data[rowIndex][columnIndex] = (String) aValue;
 			
 		    // add row to database
 			EntityTransaction userTransaction = manager.getTransaction();  
 			userTransaction.begin();
-			//UserRegistrationService.updateUser(userID);
+			UserRegistration updateRecord = UserRegistrationService.updateUser(Integer.parseInt((String) array[0]), (String) array[1], (String) array[2], (String) array[3]);
 			userTransaction.commit();
+			
+			// set the current row to rowIndex
+	        UserRegistrationResultList.add(updateRecord);
+
 	 }
 }
